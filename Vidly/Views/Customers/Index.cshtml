@@ -1,0 +1,33 @@
+﻿@model List<Vidly.Models.Customer>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>客戶列表</h2>
+<table class="table	table-bordered	table-hover">
+    <tr>
+        <th><b>客戶名稱</b></th>
+        <th><b>會員類別</b></th>
+    </tr>
+    @if (Model.Count != 0)
+    {
+         foreach (var customer in Model)
+         {
+             <tr>
+                 <td>@Html.ActionLink(@customer.Name, "Details", "Customers",new{id=@customer.Id},null)</td>
+                 <td>@customer.MembershipType.Name</td>
+             </tr>
+         }
+    }
+    else
+    {
+        <tr>
+            <td>目前尚無客戶</td>
+        </tr>
+    }
+
+</table>
+
+

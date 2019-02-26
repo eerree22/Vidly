@@ -1,0 +1,33 @@
+﻿@*將Model指向我們所建的Model，在下面才能直接用*@
+@model Vidly.ViewModels.RandomMovieViewModel
+@{
+    ViewBag.Title = "Random";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@*
+這邊使用Razor將View呈現時的一些邏輯程式寫在這
+e.g. 下面有條件的將Attribube加入
+     使用if-else來判斷該呈現什麼
+*@
+@{
+    var className = Model.Customers.Count >= 2 ? "熱門" : null;
+}
+
+<h2 class="@className" >Movie Name = @Model.Movie.Name</h2>
+
+@if (Model.Customers.Count == 0)
+{
+    <p>目前還沒有人租過這片</p>
+}
+else
+{
+    <ul>
+        @foreach (var customer in Model.Customers)
+        {
+            <li>@customer.Name</li>
+        }
+    </ul> 
+}
+
+
+

@@ -190,18 +190,58 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MoviesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201810111027253_InitialModel.cs" />
+    <Compile Include="Migrations\201810111027253_InitialModel.Designer.cs">
+      <DependentUpon>201810111027253_InitialModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810111117029_AddIsSubscribedToNewsletter.cs" />
+    <Compile Include="Migrations\201810111117029_AddIsSubscribedToNewsletter.Designer.cs">
+      <DependentUpon>201810111117029_AddIsSubscribedToNewsletter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810111123198_AddMembershipType.cs" />
+    <Compile Include="Migrations\201810111123198_AddMembershipType.Designer.cs">
+      <DependentUpon>201810111123198_AddMembershipType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810111126104_PutDataToMembershipType.cs" />
+    <Compile Include="Migrations\201810111126104_PutDataToMembershipType.Designer.cs">
+      <DependentUpon>201810111126104_PutDataToMembershipType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810111150044_changeCustomerName.cs" />
+    <Compile Include="Migrations\201810111150044_changeCustomerName.Designer.cs">
+      <DependentUpon>201810111150044_changeCustomerName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902251609346_AddNameToMembershipType.cs" />
+    <Compile Include="Migrations\201902251609346_AddNameToMembershipType.Designer.cs">
+      <DependentUpon>201902251609346_AddNameToMembershipType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902251610547_AddNameDataToMembershipType.cs" />
+    <Compile Include="Migrations\201902251610547_AddNameDataToMembershipType.Designer.cs">
+      <DependentUpon>201902251610547_AddNameDataToMembershipType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902251626234_SetNameOfMembershipTypes.cs" />
+    <Compile Include="Migrations\201902251626234_SetNameOfMembershipTypes.Designer.cs">
+      <DependentUpon>201902251626234_SetNameOfMembershipTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\MembershipType.cs" />
+    <Compile Include="Models\Movie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\RandomMovieViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap-lumen.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
@@ -213,6 +253,7 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -258,6 +299,11 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Movies\Random.cshtml" />
+    <Content Include="Views\Shared\_Navbar.cshtml" />
+    <Content Include="Views\Customers\Index.cshtml" />
+    <Content Include="Views\Customers\Details.cshtml" />
+    <Content Include="Views\Movies\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -274,6 +320,32 @@
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201810111027253_InitialModel.resx">
+      <DependentUpon>201810111027253_InitialModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810111117029_AddIsSubscribedToNewsletter.resx">
+      <DependentUpon>201810111117029_AddIsSubscribedToNewsletter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810111123198_AddMembershipType.resx">
+      <DependentUpon>201810111123198_AddMembershipType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810111126104_PutDataToMembershipType.resx">
+      <DependentUpon>201810111126104_PutDataToMembershipType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810111150044_changeCustomerName.resx">
+      <DependentUpon>201810111150044_changeCustomerName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902251609346_AddNameToMembershipType.resx">
+      <DependentUpon>201902251609346_AddNameToMembershipType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902251610547_AddNameDataToMembershipType.resx">
+      <DependentUpon>201902251610547_AddNameDataToMembershipType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902251626234_SetNameOfMembershipTypes.resx">
+      <DependentUpon>201902251626234_SetNameOfMembershipTypes.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
