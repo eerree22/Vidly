@@ -241,9 +241,42 @@
     <Compile Include="Migrations\201902261314092_ChangeBirthdate.Designer.cs">
       <DependentUpon>201902261314092_ChangeBirthdate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201902270231228_updateMovieColumn.cs" />
+    <Compile Include="Migrations\201902270231228_updateMovieColumn.Designer.cs">
+      <DependentUpon>201902270231228_updateMovieColumn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902270250147_AlterGenre.cs" />
+    <Compile Include="Migrations\201902270250147_AlterGenre.Designer.cs">
+      <DependentUpon>201902270250147_AlterGenre.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902270251104_PutDataToGenre.cs" />
+    <Compile Include="Migrations\201902270251104_PutDataToGenre.Designer.cs">
+      <DependentUpon>201902270251104_PutDataToGenre.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902270301493_PutDataToGenre_2.cs" />
+    <Compile Include="Migrations\201902270301493_PutDataToGenre_2.Designer.cs">
+      <DependentUpon>201902270301493_PutDataToGenre_2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902270304049_DeleteDataInGenre.cs" />
+    <Compile Include="Migrations\201902270304049_DeleteDataInGenre.Designer.cs">
+      <DependentUpon>201902270304049_DeleteDataInGenre.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902270310361_PutDataToGenre_3.cs" />
+    <Compile Include="Migrations\201902270310361_PutDataToGenre_3.Designer.cs">
+      <DependentUpon>201902270310361_PutDataToGenre_3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902270315489_PutDataToMovie.cs" />
+    <Compile Include="Migrations\201902270315489_PutDataToMovie.Designer.cs">
+      <DependentUpon>201902270315489_PutDataToMovie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902270320095_PutDataToMovie2.cs" />
+    <Compile Include="Migrations\201902270320095_PutDataToMovie2.Designer.cs">
+      <DependentUpon>201902270320095_PutDataToMovie2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MembershipType.cs" />
@@ -316,6 +349,7 @@
     <Content Include="Views\Customers\Index.cshtml" />
     <Content Include="Views\Customers\Details.cshtml" />
     <Content Include="Views\Movies\Index.cshtml" />
+    <Content Include="Views\Movies\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -366,6 +400,30 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201902261314092_ChangeBirthdate.resx">
       <DependentUpon>201902261314092_ChangeBirthdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902270231228_updateMovieColumn.resx">
+      <DependentUpon>201902270231228_updateMovieColumn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902270250147_AlterGenre.resx">
+      <DependentUpon>201902270250147_AlterGenre.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902270251104_PutDataToGenre.resx">
+      <DependentUpon>201902270251104_PutDataToGenre.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902270301493_PutDataToGenre_2.resx">
+      <DependentUpon>201902270301493_PutDataToGenre_2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902270304049_DeleteDataInGenre.resx">
+      <DependentUpon>201902270304049_DeleteDataInGenre.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902270310361_PutDataToGenre_3.resx">
+      <DependentUpon>201902270310361_PutDataToGenre_3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902270315489_PutDataToMovie.resx">
+      <DependentUpon>201902270315489_PutDataToMovie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902270320095_PutDataToMovie2.resx">
+      <DependentUpon>201902270320095_PutDataToMovie2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

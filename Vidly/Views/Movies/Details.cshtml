@@ -1,0 +1,15 @@
+﻿@model Vidly.Models.Movie
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.Name</h2>
+<ul>
+    <li>類型: @Model.Genre.MovieType</li>
+    <li>上映日期: @Model.ReleaseDate</li>
+    <li>新增日期: @Model.DateAdded</li>
+    <li>現有存量: @Model.NumberInStock</li>
+
+</ul>
+

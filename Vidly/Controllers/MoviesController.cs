@@ -6,20 +6,34 @@ using System.Web.Mvc;
 using Microsoft.Ajax.Utilities;
 using Vidly.Models;
 using Vidly.ViewModels;
+using System.Data.Entity;
+
 
 namespace Vidly.Controllers
 {
     public class MoviesController : Controller
     {
-        public List<Movie> movies = new List<Movie>
-        {
-            new Movie() {Id = 1, Name = "黑暗騎士"},
-            new Movie() {Id = 2, Name = "全面啟動"},
-            new Movie() {Id = 3, Name = "記憶拼圖"},
-            new Movie() {Id = 4, Name = "星際效應"},
-            new Movie() {Id = 5, Name = "頂尖對決"}
+        private ApplicationDbContext _context;
 
-        };
+        public MoviesController()
+        {
+            _context = new ApplicationDbContext();
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            _context.Dispose();
+        }
+
+        //public List<Movie> movies = new List<Movie>
+        //{
+        //    new Movie() {Id = 1, Name = "黑暗騎士"},
+        //    new Movie() {Id = 2, Name = "全面啟動"},
+        //    new Movie() {Id = 3, Name = "記憶拼圖"},
+        //    new Movie() {Id = 4, Name = "星際效應"},
+        //    new Movie() {Id = 5, Name = "頂尖對決"}
+
+        //};
 
         // GET: Movies/Random
         //ActionResult = output of our action
@@ -78,13 +92,29 @@ namespace Vidly.Controllers
         {
             if (id.HasValue)
             {
-                var myMovie = movies.Find(x => x.Id == id);
+                var myMovie = _context.Movies.Include(x => x.Genre).SingleOrDefault(x => x.Id == id);
+
                 List<Movie> myMovieList=new List<Movie>();
                 myMovieList.Add(myMovie);
                 return View(myMovieList);
             }
+            else
+            {
+                var myMovie = _context.Movies.Include(x => x.Genre).ToList();
 
-            return View(movies);
+                return View(myMovie);
+            }
+        }
+
+        public ActionResult Details(int id)
+        {
+            var myMovie = _context.Movies.Include(x => x.Genre).SingleOrDefault(x => x.Id == id);
+
+            if (myMovie == null)
+            {
+                return HttpNotFound();
+            }
+            return View(myMovie);
         }
 
         [Route("movies/released/{year}/{month:regex(\\d{2}):range(1,12)}")] //這邊使用AttributeRoutes處理Rout的工作，讓關注點不會分離
