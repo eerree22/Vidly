@@ -52,7 +52,8 @@ namespace Vidly.Controllers
             //當需要給View多個Model時則先建立ViewModel
             var myNewCustomerViewModel = new CustomerFormViewModel
             {
-                MembershipTypes = myMembershiptype
+                MembershipTypes = myMembershiptype,
+                ActName="新增會員"
             };
 
             return View(myNewCustomerViewModel);
@@ -70,7 +71,8 @@ namespace Vidly.Controllers
             var viewModel = new CustomerFormViewModel
             {
                 Customer = customer,
-                MembershipTypes = _context.MembershipTypes.ToList()
+                MembershipTypes = _context.MembershipTypes.ToList(),
+                ActName="修改會員"
             };
 
             return View("New",viewModel);
