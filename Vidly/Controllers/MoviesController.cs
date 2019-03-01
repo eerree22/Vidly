@@ -81,10 +81,10 @@ namespace Vidly.Controllers
 
             這裡這個"id"是在App_Start/RouteConfig下事先定義好的，必須完全符合RouteConfig裡的定義
         */
-        public ActionResult Edit(int id)
-        {
-            return Content("id=" + id);
-        }
+        //public ActionResult Edit(int id)
+        //{
+        //    return Content("id=" + id);
+        //}
 
         // 呈現所有movies的列表
         // 這裡使用選擇性的input參數，int後面須加問號，如果是string本來就可以為空所以不用
@@ -130,6 +130,62 @@ namespace Vidly.Controllers
             }
 
             return Content(year + "/" + month);
+        }
+
+        public ActionResult New()
+        {
+            var myGenres = _context.Genres.ToList();
+
+            var myMovieFormViewModel = new MovieFormViewModel()
+            {
+                ActName = "新增影片",
+                genres = myGenres
+            };
+
+            return View("MovieForm", myMovieFormViewModel);
+        }
+
+        public ActionResult Edit(int id)
+        {
+            var myMovie = _context.Movies.SingleOrDefault(x => x.Id == id);
+
+            if (myMovie==null)
+            {
+                return HttpNotFound();
+            }
+
+            var myMovieFormViewModel = new MovieFormViewModel()
+            {
+                ActName = "修改影片",
+                movie=myMovie,
+                genres = _context.Genres.ToList()
+            };
+
+            return View("MovieForm", myMovieFormViewModel);
+        }
+
+        [HttpPost]
+        public ActionResult Save(Movie movie)
+        {
+            var myMovie = _context.Movies.SingleOrDefault(x => x.Id == movie.Id);
+
+            if (myMovie == null)
+            {
+                movie.DateAdded = DateTime.Now;
+                _context.Movies.Add(movie);
+            }
+            else
+            {
+                myMovie.Name = movie.Name;
+                myMovie.ReleaseDate = movie.ReleaseDate;
+                myMovie.NumberInStock = movie.NumberInStock;
+                myMovie.GenreId = movie.GenreId;
+                myMovie.DateAdded = DateTime.Now;
+            }
+
+            _context.SaveChanges();
+
+            return RedirectToAction("Index");
         }
     }
 }
